@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>События | EventFlow</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1 class="logo">EventFlow</h1>
+    <a href="./index.html" class="back-link">На главную</a>
+</header>
+
+<section class="tabs">
+    <button class="tab" data-filter="active">Активные события</button>
+    <button class="tab active" data-filter="mine">Мои события</button>
+    <button class="tab" data-filter="past">Прошедшие события</button>
+</section>
+
+<section class="events" id="eventsContainer"></section>
+
+<script src="./js/events.js"></script>
+<script src="./js/auth-ui.js"></script>
+</body>
+</html>

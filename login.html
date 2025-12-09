@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Вход | EventFlow</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1 class="logo">EventFlow</h1>
+</header>
+
+<section class="form-wrapper">
+    <form class="auth-form" id="loginForm">
+        <h2>Вход</h2>
+
+        <a href="./index.html" class="back-link">← Вернуться на главную</a>
+
+        <label>
+            Электронная почта
+            <input type="email" id="loginEmail" placeholder="example@mail.ru">
+            <span class="error" id="loginEmailError"></span>
+        </label>
+
+        <label>
+            Пароль
+            <input type="password" id="loginPassword">
+            <span class="error" id="loginPasswordError"></span>
+        </label>
+
+        <button type="submit" class="btn-primary">Войти</button>
+
+        <div class="form-links">
+            <a href="./reset-password.html" id="forgotPassword">Забыли пароль?</a><br>
+            <a href="./register.html">Нет аккаунта? Зарегистрироваться</a>
+        </div>
+    </form>
+</section>
+
+<script src="js/login.js"></script>
+</body>
+</html>
