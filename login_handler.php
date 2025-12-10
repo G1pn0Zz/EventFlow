@@ -1,29 +1,30 @@
 <?php
 session_start();
-require_once __DIR__ . "/db.php";
+require_once "db.php";
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
+$email    = $_POST["email"];
+$password = $_POST["password"];
 
-    $email    = $_POST["email"];
-    $password = $_POST["password"];
+$res = $conn->query("
+    SELECT * FROM users
+    WHERE email='$email'
+      AND password='$password'
+      AND status='active'
+");
 
-    // Ищем пользователя
-    $sql = "SELECT * FROM users WHERE email='$email' AND password='$password'";
-    $result = $conn->query($sql);
+if ($res->num_rows === 1) {
 
-    if ($result && $result->num_rows === 1) {
+    $user = $res->fetch_assoc();
+    $_SESSION["user_id"]  = $user["id"];
+    $_SESSION["fullname"] = $user["fullname"];
 
-        $user = $result->fetch_assoc();
+    //  успешная авторизация
+    header("Location: index.php");
+    exit;
 
-        // Запоминаем пользователя
-        $_SESSION["user_id"]  = $user["id"];
-        $_SESSION["fullname"] = $user["fullname"];
-
-        // Вход успешен
-        header("Location: index.php");
-        exit;
-
-    } else {
-        echo "Неверная почта или пароль";
-    }
+} else {
+    //  неверные данные
+    $_SESSION["error"] = "Неверная почта или пароль";
+    header("Location: login.html");
+    exit;
 }

@@ -39,6 +39,13 @@
     </style>
 </head>
 <body>
+    <?php
+session_start();
+if (isset($_SESSION["error"])) {
+    echo '<div class="alert alert-danger text-center">'.$_SESSION["error"].'</div>';
+    unset($_SESSION["error"]);
+}
+?>
 <header class="py-3 shadow-sm">
     <div class="container d-flex justify-content-between align-items-center">
         <h2 class="m-0">EventFlow</h2>
